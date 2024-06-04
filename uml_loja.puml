@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Cliente {
+    + nome: CharField
+    + cpf: CharField
+    + telefone: CharField
+    + email: EmailField
+}
+
+class Endereco {
+    + logradouro: CharField
+    + numero: IntegerField
+    + complemento: CharField
+    + bairro: CharField
+    + cep: CharField
+}
+
+class Cidade {
+    + nome: CharField
+}
+
+class Estado {
+    + sigla: CharField
+    + nome: CharField
+}
+
+class Fabricante {}
+
+class Veiculo {
+    + marca: CharField
+    + modelo: CharField
+    + ano: CharField
+    + placa: CharField
+    + chassi: CharField
+    + tipo: CharField
+}
+
+class Servico {
+    + nome: CharField
+    + descricao: TextField
+    + valor: FloatField
+}
+
+class OrdemServico {
+    + observacao: CharField
+    + dataInicio: DateTimeField
+    + dataFim: DateTimeField
+    + valorTotal: FloatField
+}
+
+enum Status {
+  Aberto,
+  EmAndamento,
+  Finalizado,
+  Cancelado
+}
+
+Cliente "1" -right-> "*" Endereco
+Cliente "1" --> "*" Veiculo
+Cliente "1" -left-> "*" OrdemServico
+
+Veiculo "*" -right-> "1" Fabricante
+
+OrdemServico "1" -right-> "*" Veiculo
+OrdemServico "*" -left-> "*" Servico
+OrdemServico *-up-> Status
+
+Endereco "*" -right-> "1" Cidade
+Cidade "*" --> "1" Estado
+
+@enduml

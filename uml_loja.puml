@@ -2,10 +2,15 @@
 'https://plantuml.com/class-diagram
 
 class Cliente {
+    + email: EmailField
     + nome: CharField
     + cpf: CharField
     + telefone: CharField
-    + email: EmailField
+}
+
+enum Sexo {
+    + MASCULINO: IntegerField
+    + FEMININO: IntegerField
 }
 
 class Endereco {
@@ -25,15 +30,24 @@ class Estado {
     + nome: CharField
 }
 
-class Fabricante {}
+class Fabricante {
+    + razaoSocial: CharField
+    + nomeFantasia: CharField
+    + email: EmailFeld
+    + cnpj: CharField
+}
 
 class Veiculo {
-    + marca: CharField
     + modelo: CharField
     + ano: CharField
     + placa: CharField
     + chassi: CharField
-    + tipo: CharField
+}
+
+enum Tipo {
+    + CARRO: IntegerField
+    + CAMINHAO: IntegerField
+    + PICAPE: IntegerField
 }
 
 class Servico {
@@ -50,23 +64,26 @@ class OrdemServico {
 }
 
 enum Status {
-  Aberto,
-  EmAndamento,
-  Finalizado,
-  Cancelado
+    + ABERTO: IntegerField
+    + EM_ANDAMENTO: IntegerField
+    + FINALIZADO: IntegerField
+    + CANCELADO: IntegerField
 }
 
-Cliente "1" -right-> "*" Endereco
-Cliente "1" --> "*" Veiculo
-Cliente "1" -left-> "*" OrdemServico
+Cliente "1" *-right-> "*" Veiculo
+Cliente "1" *--> "*" Endereco
+Cliente "*" -left-> "1" Sexo
 
-Veiculo "*" -right-> "1" Fabricante
+Veiculo "*" o--> "1" Fabricante
+Veiculo "*" -right-> "1" Tipo
 
-OrdemServico "1" -right-> "*" Veiculo
-OrdemServico "*" -left-> "*" Servico
-OrdemServico *-up-> Status
+OrdemServico "1" o--> "*" Veiculo
+OrdemServico "*" o-right-> "*" Servico
+OrdemServico "*" -up-> "1" Status
+OrdemServico "*" --> "1" Cliente
 
-Endereco "*" -right-> "1" Cidade
-Cidade "*" --> "1" Estado
+Endereco "*" o-left-> "1" Cidade
+
+Cidade "*" o-left-> "1" Estado
 
 @enduml

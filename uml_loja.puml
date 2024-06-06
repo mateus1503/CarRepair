@@ -1,16 +1,32 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Cliente {
-    + email: EmailField
+class Pessoa {
     + nome: CharField
     + cpf: CharField
-    + telefone: CharField
+    + email: EmailField
+}
+
+class Funcionario {
+    + password: CharField
+}
+
+class Cliente {
 }
 
 enum Sexo {
     + MASCULINO: IntegerField
     + FEMININO: IntegerField
+}
+
+class Telefone {
+    + codigoArea: CharField
+    + numero: CharField
+}
+
+class Empresa {
+    + cnpj: CharField
+    + isMatriz: BooleanField
 }
 
 class Endereco {
@@ -70,20 +86,30 @@ enum Status {
     + CANCELADO: IntegerField
 }
 
-Cliente "1" *-right-> "*" Veiculo
+Cliente "1" *--> "*" Veiculo
 Cliente "1" *--> "*" Endereco
-Cliente "*" -left-> "1" Sexo
+Cliente "*" --> "1" Sexo
+Cliente *--> Telefone
+
+Funcionario "1" *--> "*" Endereco
+Funcionario "*" --> "1" Sexo
+Funcionario *--> Telefone
+Funcionario *--> Empresa
 
 Veiculo "*" o--> "1" Fabricante
-Veiculo "*" -right-> "1" Tipo
+Veiculo "*" --> "1" Tipo
 
 OrdemServico "1" o--> "*" Veiculo
-OrdemServico "*" o-right-> "*" Servico
-OrdemServico "*" -up-> "1" Status
+OrdemServico "*" o--> "*" Servico
+OrdemServico "*" --> "1" Status
 OrdemServico "*" --> "1" Cliente
+OrdemServico "*" --> "1" Funcionario
 
-Endereco "*" o-left-> "1" Cidade
+Empresa *--> Telefone
+Fabricante *--> Telefone
 
-Cidade "*" o-left-> "1" Estado
+
+Endereco "*" o--> "1" Cidade
+Cidade "*" o--> "1" Estado
 
 @enduml

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -84,11 +85,11 @@ WSGI_APPLICATION = 'carrepair.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'CarRepairPro',
-        'USER': 'mateus',
-        'PASSWORD': 'aluno',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': config('DB_HOST'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'PORT': config('DB_PORT'),
     }
 }
 

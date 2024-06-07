@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'veiculo.apps.VeiculoConfig',
+    'core.apps.CoreConfig',
+    'empresas.apps.EmpresasConfig',
 ]
 
 MIDDLEWARE = [

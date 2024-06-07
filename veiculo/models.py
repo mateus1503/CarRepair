@@ -2,10 +2,11 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 
-class Tipo(models.IntegerField):
-    CARRO = 1, 'Carro'
-    CAMINHAO = 2, 'Caminhao'
-    PICAPE = 3, 'Picape'
+TIPOS_VEICULOS = [
+    (1, 'Carro'),
+    (2, 'Caminhão'),
+    (3, 'Picape'),
+]
 
 
 class Veiculo(models.Model):
@@ -22,12 +23,7 @@ class Veiculo(models.Model):
         ]
     )
     chassi = models.CharField(max_length=17)
-    tipo = models.IntegerField(choices=Tipo.choices)
+    tipo = models.IntegerField(choices=TIPOS_VEICULOS)
 
-
-class Fabricante(models.Model):
-    razaoSocial = models.CharField(max_length=255)
-    nomeFantasia = models.CharField(max_length=255)
-    email = models.EmailField()
-    cnpj = models.CharField(max_length=18)
-    veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
+    class Meta:
+        db_table = 'veiculo'

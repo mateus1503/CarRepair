@@ -12,7 +12,7 @@ class Funcionario {
 }
 
 class Cliente {
-    + credito: FloatField
+    + aceitaMarketing: BooleanField
 }
 
 enum Sexo {
@@ -87,27 +87,32 @@ enum Status {
     + CANCELADO: IntegerField
 }
 
-OrdemServico "*" o--> "1" Veiculo
-OrdemServico "*" o-left-> "1" Cliente
-OrdemServico "*" o--> "1" Funcionario
-OrdemServico "*" o-right-> "*" Servico
-OrdemServico "*" -up-> "1" Status
+OrdemServico -left-> Cliente
+OrdemServico --> Funcionario
+OrdemServico --> Servico
+OrdemServico -up-> Status
 
-Veiculo "*" -up-> "1" Tipo
-Veiculo "*" o-left-> "1" Fabricante
+Servico --> Empresa
 
-Funcionario "1" -left-> "1" Pessoa
-Funcionario "*" o-right-> "1" Empresa
+Veiculo -up-> Tipo
+Veiculo --> Fabricante
 
-Cliente "1" --> "1" Pessoa
-Cliente "1" *-left-> "*" Veiculo
+Fabricante --> Telefone
 
-Pessoa "1" *-down-> "*" Endereco
-Pessoa "1" *--> "*" Telefone
-Pessoa "*" --> "1" Sexo
+Empresa --> Telefone
 
-Endereco "*" o-left-> "1" Cidade
+Pessoa --> Sexo
+Pessoa --> Telefone
+Pessoa --> Endereco
 
-Cidade "*" o-left-> "1" Estado
+Funcionario --> Pessoa
+Funcionario --> Empresa
+
+Cliente --> Pessoa
+Cliente -left-> Veiculo
+
+Endereco --> Cidade
+
+Cidade "*" o--> "1" Estado
 
 @enduml

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'veiculo.apps.VeiculoConfig',
     'core.apps.CoreConfig',
     'empresas.apps.EmpresasConfig',
+    'servicos.apps.ServicosConfig',
+    'usuarios.apps.UsuariosConfig',
 ]
 
 MIDDLEWARE = [

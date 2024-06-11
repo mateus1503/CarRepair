@@ -1,3 +1,11 @@
 from django.contrib import admin
+from .models import Servico, OrdemServico
+from .forms import OrdemServicoForm
 
-# Register your models here.
+
+class OrdemServicoAdmin(admin.ModelAdmin):
+    form = OrdemServicoForm
+
+
+admin.site.register(Servico)
+admin.site.register(OrdemServico)

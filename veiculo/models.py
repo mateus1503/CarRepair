@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from empresas.models import Fabricante
 
 
 TIPOS_VEICULOS = [
@@ -24,6 +25,10 @@ class Veiculo(models.Model):
     )
     chassi = models.CharField(max_length=17)
     tipo = models.IntegerField(choices=TIPOS_VEICULOS)
+    fabricante = models.ForeignKey(Fabricante, related_name='veiculo', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.modelo} - {self.ano}'
 
     class Meta:
         db_table = 'veiculo'

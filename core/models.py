@@ -12,7 +12,7 @@ class Estado(models.Model):
     nome = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nome
+        return f'{self.nome} - {self.sigla}'
 
     class Meta:
         db_table = 'estado'
@@ -46,7 +46,7 @@ class Endereco(models.Model):
 
 class Telefone(models.Model):
     codigoArea = models.CharField(max_length=3)
-    numero = models.CharField(max_length=9, unique=True)
+    celular = models.CharField(max_length=9, unique=True)
 
     def __str__(self):
         return f'({self.codigoArea}) {self.numero}'

@@ -2,7 +2,6 @@ from django.contrib.auth.hashers import make_password
 from django.db import models
 from core.models import Pessoa
 from empresas.models import Empresa
-from veiculo.models import Veiculo
 
 
 class Funcionario(models.Model):
@@ -23,7 +22,6 @@ class Funcionario(models.Model):
 
 class Cliente(models.Model):
     pessoa = models.OneToOneField(Pessoa, on_delete=models.CASCADE)
-    veiculo = models.ForeignKey(Veiculo, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.pessoa.nome

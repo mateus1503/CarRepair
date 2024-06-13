@@ -19,5 +19,4 @@ from . import views
 
 
 urlpatterns = [
-    path('add_cidade/', views.add_cidade, name='add_cidade'),
 ]

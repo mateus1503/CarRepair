@@ -9,24 +9,24 @@ def add_cliente(request):
     if request.method == 'POST':
         formCliente = ClienteForm(request.POST)
         formPessoa = PessoaForm(request.POST)
-        formTelefone = TelefoneForm(request.POST)
         formEndereco = EnderecoForm(request.POST)
-        if formCliente.is_valid() and formPessoa.is_valid() and formTelefone.is_valid and formEndereco.is_valid():
-            telefone = formTelefone.save()
+        formTelefone = TelefoneForm(request.POST)
+        if formCliente.is_valid() and formPessoa.is_valid() and formEndereco.is_valid() and formTelefone.is_valid():
             endereco = formEndereco.save()
+            telefone = formTelefone.save()
             pessoa = formPessoa.save(commit=False)
-            pessoa.telefone = telefone
             pessoa.endereco = endereco
-            pessoa = pessoa.save()
+            pessoa.telefone = telefone
+            pessoa.save()
             cliente = formCliente.save(commit=False)
             cliente.pessoa = pessoa
             cliente.save()
-            return HttpResponseRedirect(reverse('add_cidade'))
+            return HttpResponseRedirect(reverse('add_cliente'))
     else:
         formCliente = ClienteForm()
         formPessoa = PessoaForm()
-        formTelefone = TelefoneForm()
         formEndereco = EnderecoForm()
+        formTelefone = TelefoneForm()
 
-    context = dict(formCliente=formCliente, formPessoa=formPessoa, formTelefone=formTelefone, formEndereco=formEndereco)
+    context = dict(formCliente=formCliente, formPessoa=formPessoa, formEndereco=formEndereco, formTelefone=formTelefone)
     return render(request, 'usuarios/add_cliente.html', context)

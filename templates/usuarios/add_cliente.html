@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#id_cep').blur(function () {
+                var cep = $(this).val();
+                if (cep) {
+                    $.ajax({
+                        url: `https://viacep.com.br/ws/${cep}/json/`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (!data.erro) {
+                                $('#id_logradouro').val(data.logradouro);
+                                $('#id_bairro').val(data.bairro);
+                                $('#id_cidade').val(data.localidade);
+                                $('#id_estado').val(data.uf);
+                                $('#id_complemento').val(data.complemento);
+                                $('#id_codigoArea').val(data.ddd);
+                            } else {
+                                alert('CEP não encontrado');
+                            }
+                        },
+                        error: function () {
+                            alert('Erro ao buscar o CEP');
+                        }
+                    })
+                }
+            })
+        });
+    </script>
 </head>
 <body>
     <h1>Adicionar Cliente</h1>
     <form action="{% url 'add_cliente' %}" method="post">
         {% csrf_token %}
+        {{ formCliente.as_p }}
         {{ formPessoa.as_p }}
-        {{ formTelefone.as_p }}
         {{ formEndereco.as_p }}
+        {{ formTelefone.as_p }}
         <button type="submit">Adicionar</button>
     </form>
 </body>

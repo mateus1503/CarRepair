@@ -2,14 +2,6 @@ from django import forms
 from .models import *
 
 
-class CidadeForm(forms.ModelForm):
-    estado = forms.ModelChoiceField(queryset=Estado.objects.order_by('nome'))
-
-    class Meta:
-        model = Cidade
-        fields = ['nome', 'estado']
-
-
 class PessoaForm(forms.ModelForm):
     class Meta:
         model = Pessoa
@@ -21,9 +13,10 @@ class TelefoneForm(forms.ModelForm):
     class Meta:
         model = Telefone
         fields = '__all__'
+        labels = {'codigoArea': 'Código da Área'}
 
 
 class EnderecoForm(forms.ModelForm):
     class Meta:
         model = Endereco
-        fields = '__all__'
+        fields = ['cep', 'logradouro', 'bairro', 'numero', 'complemento', 'cidade', 'estado']

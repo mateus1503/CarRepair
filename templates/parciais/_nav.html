@@ -1,0 +1,12 @@
+<nav>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'parciais/_nav.css' %}">
+
+    <a href="{% url 'add_cliente' %}">Cadastrar Cliente</a>
+    <a href="{% url 'list_clientes' %}">Lista de Clientes</a>
+    <a href="cadastrarServico.jsp">Cadastrar Serviço</a>
+    <a href="listarServico.jsp">Lista de Serviços</a>
+    <a href="cadastrarUsuario.jsp">Cadastrar Usuário</a>
+    <a href="listarUsuario.jsp">Lista de Usuários</a>
+    <a href="sair">Sair</a>
+</nav>

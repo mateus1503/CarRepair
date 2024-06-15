@@ -13,7 +13,7 @@ class PessoaForm(forms.ModelForm):
 class TelefoneForm(forms.ModelForm):
     class Meta:
         model = Telefone
-        fields = '__all__'
+        fields = ['codigoArea', 'celular']
         labels = {'codigoArea': 'Código da Área'}
 
 

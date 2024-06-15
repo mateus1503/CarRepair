@@ -1,0 +1,57 @@
+/* Estilos Globais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilos do Cabeçalho */
+header {
+    text-align: center;
+    background-color: coral;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 10px 0 0;
+}
+
+/* Estilos da Mensagem */
+.mensagem {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    color: coral;
+}
+
+/* Estilos do Menu (Ajustar conforme necessário) */
+/* Supondo que menu.jsp inclua uma lista com a classe "menu" */
+.menu {
+    list-style-type: none;
+    padding: 0;
+    background-color: coral;
+    overflow: hidden;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    background-color: #333;
+}

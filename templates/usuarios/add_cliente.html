@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base.html' %}
+{% block script %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -33,16 +30,19 @@
             })
         });
     </script>
-</head>
-<body>
-    <h1>Adicionar Cliente</h1>
-    <form action="{% url 'add_cliente' %}" method="post">
-        {% csrf_token %}
-        {{ formCliente.as_p }}
-        {{ formPessoa.as_p }}
-        {{ formEndereco.as_p }}
-        {{ formTelefone.as_p }}
+{% endblock script %}
+{% block content %}
+    <header>
+        <h1>Cadastrar Cliente</h1>
+    </header>
+	<main>
+        <form action="{% url 'add_cliente' %}" method="post">
+            {% csrf_token %}
+            {{ formCliente.as_p }}
+            {{ formPessoa.as_p }}
+            {{ formEndereco.as_p }}
+            {{ formTelefone.as_p }}
         <button type="submit">Adicionar</button>
     </form>
-</body>
-</html>
+    </main>
+{% endblock content %}

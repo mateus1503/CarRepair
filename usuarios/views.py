@@ -4,6 +4,8 @@ from .forms import ClienteForm
 from core.forms import PessoaForm, TelefoneForm, EnderecoForm
 from django.http import HttpResponseRedirect
 
+from .models import Cliente
+
 
 def add_cliente(request):
     if request.method == 'POST':
@@ -12,12 +14,13 @@ def add_cliente(request):
         formEndereco = EnderecoForm(request.POST)
         formTelefone = TelefoneForm(request.POST)
         if formCliente.is_valid() and formPessoa.is_valid() and formEndereco.is_valid() and formTelefone.is_valid():
-            endereco = formEndereco.save()
-            telefone = formTelefone.save()
-            pessoa = formPessoa.save(commit=False)
-            pessoa.endereco = endereco
-            pessoa.telefone = telefone
-            pessoa.save()
+            pessoa = formPessoa.save()
+            telefone = formTelefone.save(commit=False)
+            telefone.pessoa = pessoa
+            telefone.save()
+            endereco = formEndereco.save(commit=False)
+            endereco.pessoa = pessoa
+            endereco.save()
             cliente = formCliente.save(commit=False)
             cliente.pessoa = pessoa
             cliente.save()
@@ -30,3 +33,10 @@ def add_cliente(request):
 
     context = dict(formCliente=formCliente, formPessoa=formPessoa, formEndereco=formEndereco, formTelefone=formTelefone)
     return render(request, 'usuarios/add_cliente.html', context)
+
+
+def list_clientes(request):
+    clientes = Cliente.objects.order_by('id')
+
+    context = {'clientes': clientes}
+    return render(request, 'usuarios/list_clientes.html', context)

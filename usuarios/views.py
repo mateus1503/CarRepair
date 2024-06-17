@@ -38,5 +38,6 @@ def add_cliente(request):
 def list_clientes(request):
     clientes = Cliente.objects.order_by('id')
 
+
     context = {'clientes': clientes}
     return render(request, 'usuarios/list_clientes.html', context)

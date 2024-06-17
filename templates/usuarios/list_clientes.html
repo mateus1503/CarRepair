@@ -4,15 +4,24 @@
         <h2>Clientes</h2>
     </header>
 	<main>
-        <link rel="stylesheet" href="Stylesheet\styleListarCliente.css">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'usuarios/css/listarCliente.css' %}">
             <table>
                 {% for cliente in clientes %}
                     <section class="cliente">
                         <h1>ID: {{ cliente.id }}</h1>
-                        <h1>Nome: ${cliente.nome}</h1>
-                        <h4>CPF: ${cliente.cpf}</h4>
-                        <h4>Telefone: ${cliente.telefone}</h4>
-                        <h4>Endereço: ${cliente.endereco}</h4>
+                        <h1>Nome: {{ cliente.pessoa.nome }}</h1>
+                        <h4>CPF: {{ cliente.pessoa.cpf }}</h4>
+                        <h4>Telefone:
+                            {% for telefone in cliente.pessoa.telefone.all %}
+                                ({{ telefone.codigoArea }}) {{ telefone.celular }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </h4>
+                        <h4>Endereço:
+                            {% for endereco in cliente.pessoa.endereco.all %}
+                                {{ endereco.logradouro }}, {{ endereco.numero }} - {{ endereco.bairro }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </h4>
                         <p>
                             <a href="processarOrdemServico?id=${cliente.id}">Realizar Ordem de Serviço</a>
                             <a href="cadastrarVeiculo.jsp?id=${cliente.id}">Cadastrar Veículo</a>

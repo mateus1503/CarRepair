@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+}
+
+button, .btn-limpar {
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.btn-limpar {
+    background-color: #DC3545;
+    margin-left: 10px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.cliente {
+    border: 1px solid #CED4DA;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.cliente h1 {
+    margin-bottom: 5px;
+}
+
+section p a {
+    margin-right: 10px;
+    color: #007BFF;
+    text-decoration: none;
+    display: inline-block;
+}
+
+section p a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+}
+
+button, .btn-limpar, section p a {
+    padding: 8px 15px;
+    background-color: coral;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.btn-limpar {
+    background-color: #DC3545;
+    margin-left: 10px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.cliente {
+    border: 1px solid #CED4DA;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.cliente h1 {
+    margin-bottom: 5px;
+}
+
+section p a {
+    margin-right: 10px;
+    color: #000000;
+    text-decoration: black;
+    display: inline-block;
+}
+
+section p a:hover {
+    text-decoration: underline;
+}

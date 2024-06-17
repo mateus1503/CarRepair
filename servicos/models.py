@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models.signals import m2m_changed, post_save
-from django.dispatch import receiver
 from empresas.models import Empresa
 from usuarios.models import Funcionario, Cliente
 
@@ -16,7 +14,6 @@ class Servico(models.Model):
     nome = models.CharField(max_length=50)
     descricao = models.TextField(max_length=255)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
-    empresa = models.ForeignKey(Empresa, related_name='servico', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome

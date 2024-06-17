@@ -1,5 +1,6 @@
 from django.db import models
 from core.models import Telefone, Endereco
+from servicos.models import Servico
 
 
 class Empresa(models.Model):
@@ -8,6 +9,7 @@ class Empresa(models.Model):
     cnpj = models.CharField(max_length=14)
     email = models.EmailField()
     isMatriz = models.BooleanField(default=False)
+    servico = models.ForeignKey(Servico, on_delete=models.CASCADE)
     telefone = models.OneToOneField(Telefone, related_name='empresa', on_delete=models.SET_NULL, null=True, blank=True)
     endereco = models.ForeignKey(Endereco, related_name='empresa', on_delete=models.SET_NULL, null=True, blank=True)
 

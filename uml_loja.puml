@@ -25,11 +25,6 @@ class Telefone {
     + numero: CharField
 }
 
-class Empresa {
-    + cnpj: CharField
-    + isMatriz: BooleanField
-}
-
 class Endereco {
     + logradouro: CharField
     + numero: IntegerField
@@ -92,21 +87,16 @@ OrdemServico --> Funcionario
 OrdemServico --> Servico
 OrdemServico -up-> Status
 
-Servico --> Empresa
-
 Veiculo -up-> Tipo
 Veiculo --> Fabricante
 
 Fabricante --> Telefone
-
-Empresa --> Telefone
 
 Pessoa --> Sexo
 Pessoa --> Telefone
 Pessoa --> Endereco
 
 Funcionario --> Pessoa
-Funcionario --> Empresa
 
 Cliente --> Pessoa
 Cliente -left-> Veiculo

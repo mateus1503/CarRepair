@@ -1,5 +1,4 @@
 from django.db import models
-from empresas.models import Empresa
 from usuarios.models import Funcionario, Cliente
 
 STATUS = {

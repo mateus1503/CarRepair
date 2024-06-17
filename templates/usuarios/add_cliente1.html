@@ -33,25 +33,21 @@
 {% endblock script %}
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'usuarios/css/cadastrarCliente.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/cadastrarCliente1.css' %}">
     <header>
         <h1>Cadastrar Cliente</h1>
     </header>
 	<main>
         <form action="{% url 'add_cliente' %}" method="post">
             {% csrf_token %}
-            <div class="form-section">
-                {{ formCliente.as_p }}
+{#            {{ formCliente.as_div }}#}
+            <div class="form-floating mb-3">
+                {{ formPessoa.nome }}
+                <label for="floatingInput">Nome</label>
             </div>
-            <div class="form-section">
-                {{ formPessoa.as_p }}
-            </div>
-            <div class="form-section">
-                {{ formEndereco.as_p }}
-            </div>
-            <div class="form-section">
-                {{ formTelefone.as_p }}
-            </div>
+{#            {{ formEndereco.as_div }}#}
+{#            {{ formTelefone.as_div }}#}
+            
             <button type="submit">Adicionar</button>
         </form>
     </main>

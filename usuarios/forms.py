@@ -8,7 +8,7 @@ class FuncionarioForm(forms.ModelForm):
 
     class Meta:
         model = Funcionario
-        fields = ['password', 'pessoa', 'empresa']
+        fields = ['password', 'pessoa']
 
 
 class ClienteForm(forms.ModelForm):

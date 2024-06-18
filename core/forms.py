@@ -8,9 +8,6 @@ class PessoaForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['telefone', 'endereco']
         labels = {'cpf': 'CPF'}
-        widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control', 'id': 'floatingInput', 'placeholder': 'nome'}),
-        }
 
 
 class TelefoneForm(forms.ModelForm):
@@ -18,10 +15,6 @@ class TelefoneForm(forms.ModelForm):
         model = Telefone
         fields = ['codigoArea', 'celular']
         labels = {'codigoArea': 'Código da Área'}
-        widgets = {
-            'codigoArea': forms.TextInput(attrs={'class': 'form-control'}),
-            'celular': forms.TextInput(attrs={'class': 'form-control'}),
-        }
 
 
 class EnderecoForm(forms.ModelForm):

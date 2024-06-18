@@ -37,21 +37,13 @@
     <header>
         <h1>Cadastrar Cliente</h1>
     </header>
-	<main>
+    <main>
         <form action="{% url 'add_cliente' %}" method="post">
             {% csrf_token %}
-            <div class="form-section">
-                {{ formCliente.as_p }}
-            </div>
-            <div class="form-section">
-                {{ formPessoa.as_p }}
-            </div>
-            <div class="form-section">
-                {{ formEndereco.as_p }}
-            </div>
-            <div class="form-section">
-                {{ formTelefone.as_p }}
-            </div>
+            {{ formCliente.as_p }}
+            {{ formPessoa.as_p }}
+            {{ formEndereco.as_p }}
+            {{ formTelefone.as_p }}
             <button type="submit">Adicionar</button>
         </form>
     </main>

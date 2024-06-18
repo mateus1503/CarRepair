@@ -32,7 +32,7 @@ def add_cliente(request):
         formTelefone = TelefoneForm()
 
     context = dict(formCliente=formCliente, formPessoa=formPessoa, formEndereco=formEndereco, formTelefone=formTelefone)
-    return render(request, 'usuarios/add_cliente1.html', context)
+    return render(request, 'usuarios/add_cliente.html', context)
 
 
 def list_clientes(request):

@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     path('add_servico/', views.add_servico, name='add_servico'),
+    path('list_servicos/', views.list_servicos, name='list_servicos'),
 ]

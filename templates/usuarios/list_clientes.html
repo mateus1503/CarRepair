@@ -28,7 +28,7 @@
 
                     <div class="actions">
                         <button type="button" class="btn btn-primary" onclick="realizarOrdemServico({{ cliente.id }})">Realizar Ordem de Serviço</button>
-                        <a href="cadastrarVeiculo.jsp?id={{ cliente.id }}" class="btn btn-secondary">Cadastrar Veículo</a>
+                        <a href="{% url 'add_veiculos' cliente.id %}" class="btn btn-secondary">Cadastrar Veículo</a>
                         <a href="listarVeiculo.jsp?id={{ cliente.id }}" class="btn btn-secondary">Listar Veículos</a>
                         <a href="listarOrdemServico?id={{ cliente.id }}" class="btn btn-secondary">Ordem de Serviços</a>
                         <a href="editarCliente.jsp?id={{ cliente.id }}&nome={{ cliente.nome }}&endereco={{ cliente.endereco }}&telefone={{ cliente.telefone }}&cpf={{ cliente.cpf }}" class="btn btn-warning">Editar Dados</a>

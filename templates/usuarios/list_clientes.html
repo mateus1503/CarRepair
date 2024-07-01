@@ -7,35 +7,46 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'usuarios/css/listarCliente.css' %}">
         <div class="clientes">
-            {% for cliente in clientes %}
-                <div class="cliente">
-                    <h3>Nome: {{ cliente.pessoa.nome }}</h3>
-                    <p>CPF: {{ cliente.pessoa.cpf }}</p>
+            <div class="row">
+                {% for cliente in clientes %}
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3>Nome: {{ cliente.pessoa.nome }}</h3>
+                                <p>CPF: {{ cliente.pessoa.cpf }}</p>
 
-                    <h4>Telefone:</h4>
-                    <ul>
-                        {% for telefone in cliente.pessoa.telefone.all %}
-                            <li>({{ telefone.codigoArea }}) {{ telefone.celular }}</li>
-                        {% endfor %}
-                    </ul>
+                                <h4>Telefone:</h4>
+                                <ul>
+                                    {% for telefone in cliente.pessoa.telefone.all %}
+                                        <li>({{ telefone.codigoArea }}) {{ telefone.celular }}</li>
+                                    {% endfor %}
+                                </ul>
 
-                    <h4>Endereço:</h4>
-                    <ul>
-                        {% for endereco in cliente.pessoa.endereco.all %}
-                            <li>{{ endereco.logradouro }}, {{ endereco.numero }} - {{ endereco.bairro }}</li>
-                        {% endfor %}
-                    </ul>
-
-                    <div class="actions">
-                        <button type="button" class="btn btn-primary" onclick="realizarOrdemServico({{ cliente.id }})">Realizar Ordem de Serviço</button>
-                        <a href="{% url 'add_veiculos' cliente.id %}" class="btn btn-secondary">Cadastrar Veículo</a>
-                        <a href="listarVeiculo.jsp?id={{ cliente.id }}" class="btn btn-secondary">Listar Veículos</a>
-                        <a href="listarOrdemServico?id={{ cliente.id }}" class="btn btn-secondary">Ordem de Serviços</a>
-                        <a href="editarCliente.jsp?id={{ cliente.id }}&nome={{ cliente.nome }}&endereco={{ cliente.endereco }}&telefone={{ cliente.telefone }}&cpf={{ cliente.cpf }}" class="btn btn-warning">Editar Dados</a>
-                        <a href="deletarCliente?id={{ cliente.id }}" class="btn btn-danger">Deletar Cliente</a>
+                                <h4>Endereço:</h4>
+                                <ul>
+                                    {% for endereco in cliente.pessoa.endereco.all %}
+                                        <li>{{ endereco.logradouro }}, {{ endereco.numero }}
+                                            - {{ endereco.bairro }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-light">
+                                <div class="d-flex flex-column gap-2">
+                                    <button type="button" class="btn btn-primary" onclick="realizarOrdemServico({{ cliente.id }})">
+                                        Realizar Ordem de Serviço
+                                    </button>
+                                    <a href="{% url 'add_veiculos' cliente.id %}" class="btn btn-primary">Cadastrar Veículo</a>
+                                    <a href="listarVeiculo.jsp?id={{ cliente.id }}" class="btn btn-secondary">Listar Veículos</a>
+                                    <a href="listarOrdemServico?id={{ cliente.id }}" class="btn btn-secondary">Ordem de Serviços</a>
+                                    <a href="editarCliente.jsp?id={{ cliente.id }}&nome={{ cliente.nome }}&endereco={{ cliente.endereco }}&telefone={{ cliente.telefone }}&cpf={{ cliente.cpf }}"
+                                       class="btn btn-warning">Editar Dados</a>
+                                    <a href="deletarCliente?id={{ cliente.id }}" class="btn btn-danger">Deletar Cliente</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </main>
 {% endblock content %}

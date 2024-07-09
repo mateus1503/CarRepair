@@ -6,15 +6,36 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'usuarios/css/cadastrarCliente.css' %}">
     <header>
-        <h1>Cadastrar Serviço</h1>
+        <h1>Cadastrar Veículo</h1>
     </header>
-	<main>
+    <main>
         <form action="{% url 'add_veiculos' cliente.id %}" method="post">
             {% csrf_token %}
             <div class="form-control">
-                {{ form.as_p }}
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                    {% if field.name == 'fabricante' %}
+                        {{ field.label_tag }}
+                        <div class="input-group">
+                            {{ field }}
+                            <a href="{% url 'add_fabricantes' %}" type="button" class="btn btn-outline-secondary">Adicionar</a>
+                        </div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ field.label_tag }} {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="alert alert-danger">
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
                 <button type="submit">Adicionar</button>
             </div>
-    </form>
+        </form>
     </main>
 {% endblock content %}

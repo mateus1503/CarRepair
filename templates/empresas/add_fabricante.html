@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock script %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/cadastrarCliente.css' %}">
+    <header>
+        <h1>Cadastrar Fabricante</h1>
+    </header>
+    <main>
+        <form action="{% url 'add_fabricantes' %}" method="post">
+            {% csrf_token %}
+            <div class="form-control">
+                {{ form.as_p }}
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+    </main>
+{% endblock content %}

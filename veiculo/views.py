@@ -11,11 +11,11 @@ def add_veiculos(request, cliente_id):
     if request.method == 'POST':
         form = VeiculoForm(data=request.POST)
         if form.is_valid():
+            form.cliente = cliente
             form.save()
             return HttpResponseRedirect(reverse('add_veiculos', args=[cliente_id]))
     else:
         form = VeiculoForm()
-        form.fields['cliente'].initial = cliente
 
     context = {'form': form, 'cliente': cliente}
     return render(request, 'veiculo/add_veiculos.html', context)
